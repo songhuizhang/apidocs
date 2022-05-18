@@ -168,7 +168,7 @@ under the License.
       const toggleBtn = $("#lang_box");
       console.log(window.location.pathname)
       const currentSystem = menuObj.map(i=> i[0]).find(j => {
-        return /`${j}`/.test(window.location.pathname);
+        return new RegEpx(j).test(window.location.pathname);
       }) || 'spot_v3';
       const current_btn =  $(`.${currentSystem}`);
       toggleBtn.html(currentLang ? 'english': '中文');
