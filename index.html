@@ -3967,7 +3967,7 @@ Secret key仅在申请时展示，请做好记录留存
       const toggleBtn = $("#lang_box");
       console.log(window.location.pathname)
       const currentSystem = menuObj.map(i=> i[0]).find(j => {
-        return new RegEpx(j).test(window.location.pathname);
+        return new RegExp(j).test(window.location.pathname);
       }) || 'spot_v3';
       const current_btn =  $(`.${currentSystem}`);
       toggleBtn.html(currentLang ? 'english': '中文');
