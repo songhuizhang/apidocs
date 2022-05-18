@@ -3969,9 +3969,11 @@ Secret key仅在申请时展示，请做好记录留存
       const currentSystem = menuObj.map(i=> i[0]).find(j => {
         return new RegExp(j).test(window.location.pathname);
       }) || 'spot_v3';
-      const current_btn =  $(`.${currentSystem}`);
+      const current_btn =  $(`a.${currentSystem}`);
+      const current_option =  $(`option.${currentSystem}`);
       toggleBtn.html(currentLang ? 'english': '中文');
       current_btn.addClass('current');
+      current_option.attr('selected', 'selected');
     })
 
     function changeMenuLink(menu) {
