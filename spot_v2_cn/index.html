@@ -405,6 +405,9 @@
                     <a href="#ticker" class="toc-h2 toc-link" data-title="Ticker行情">Ticker行情</a>
                   </li>
                   <li>
+                    <a href="#38a975b802" class="toc-h2 toc-link" data-title="深度信息">深度信息</a>
+                  </li>
+                  <li>
                     <a href="#6a30a471cf" class="toc-h2 toc-link" data-title="成交记录">成交记录</a>
                   </li>
                   <li>
@@ -420,6 +423,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#870c0ab88b" class="toc-h2 toc-link" data-title="账户余额">账户余额</a>
+                  </li>
+                  <li>
+                    <a href="#fe5c9786b0" class="toc-h2 toc-link" data-title="获取账户可接口交易的交易对">获取账户可接口交易的交易对</a>
                   </li>
               </ul>
           </li>
@@ -452,9 +458,6 @@
                   </li>
                   <li>
                     <a href="#09991ca64a" class="toc-h2 toc-link" data-title="按交易对撤销订单">按交易对撤销订单</a>
-                  </li>
-                  <li>
-                    <a href="#98210fe966" class="toc-h2 toc-link" data-title="订单查询(单订单状态查询)">订单查询(单订单状态查询)</a>
                   </li>
               </ul>
           </li>
@@ -1346,6 +1349,87 @@ Secret key仅在申请时展示，请做好记录留存
 <aside class="notice">
 阶段是以当前时间的滚动24小时计。
 </aside>
+<h2 id='38a975b802'>深度信息</h2>
+<blockquote>
+<p>响应示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"183.1683154"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128.5"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"183.1983186"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101.6"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"182.4417544"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"115.5"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"182.4217568"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"135.7"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>GET</strong> <code>/open/api/v2/market/depth</code></li>
+</ul>
+
+<p>参数：</p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>说明</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>是</td>
+<td>交易对名称</td>
+<td></td>
+</tr>
+<tr>
+<td>depth</td>
+<td>string</td>
+<td>是</td>
+<td>返回的深度数</td>
+<td>1~2000</td>
+</tr>
+</tbody></table>
+
+<p>响应：</p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bids</td>
+<td>object</td>
+<td>买单，包含字段[price, quantity] 价格及数量</td>
+</tr>
+<tr>
+<td>asks</td>
+<td>object</td>
+<td>卖单，包含字段[price, quantity] 价格及数量</td>
+</tr>
+</tbody></table>
 <h2 id='6a30a471cf'>成交记录</h2>
 <blockquote>
 <p>响应示例</p>
@@ -1700,10 +1784,33 @@ Secret key仅在申请时展示，请做好记录留存
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<ul>
-<li><strong>GET</strong> <code>/open/api/v2/account/info</code>## 获取账户可接口交易的交易对</li>
-</ul>
+<p><strong>GET</strong> <code>/open/api/v2/account/info</code></p>
 
+<p>参数：None</p>
+
+<p>响应：</p>
+
+<p>币种对应的冻结余额和可用余额</p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>frozen</td>
+<td>string</td>
+<td>冻结余额</td>
+</tr>
+<tr>
+<td>available</td>
+<td>string</td>
+<td>可用余额</td>
+</tr>
+</tbody></table>
+<h2 id='fe5c9786b0'>获取账户可接口交易的交易对</h2>
 <blockquote>
 <p>响应示例</p>
 </blockquote>
@@ -1769,31 +1876,6 @@ Secret key仅在申请时展示，请做好记录留存
 <td></data></td>
 <td></td>
 <td></td>
-</tr>
-</tbody></table>
-
-<p>参数：None</p>
-
-<p>响应：</p>
-
-<p>币种对应的冻结余额和可用余额</p>
-
-<table><thead>
-<tr>
-<th>参数名</th>
-<th>数据类型</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>frozen</td>
-<td>string</td>
-<td>冻结余额</td>
-</tr>
-<tr>
-<td>available</td>
-<td>string</td>
-<td>可用余额</td>
 </tr>
 </tbody></table>
 <h1 id='57aa173947'>现货交易</h1><h2 id='fd6ce2a756'>下单</h2>
@@ -2766,119 +2848,6 @@ Secret key仅在申请时展示，请做好记录留存
 <aside class="notice">
 请求返回表示服务端接收到了对应订单的撤单请求，并不表示已经撤单完成
 </aside>
-<h2 id='98210fe966'>订单查询(单订单状态查询)</h2>
-<ul>
-<li><strong>GET</strong> <code>/open/api/v2/order/single_state/list</code></li>
-</ul>
-
-<p>参数：</p>
-
-<table><thead>
-<tr>
-<th>参数名</th>
-<th>数据类型</th>
-<th>是否必须</th>
-<th>说明</th>
-<th>取值范围</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>是</td>
-<td>交易对名称</td>
-<td></td>
-</tr>
-<tr>
-<td>start_time</td>
-<td>string</td>
-<td>否</td>
-<td>起始时间</td>
-<td></td>
-</tr>
-<tr>
-<td>limit</td>
-<td>string</td>
-<td>否</td>
-<td>返回条数</td>
-<td>1~1000，默认值50</td>
-</tr>
-<tr>
-<td>trade_type</td>
-<td>string</td>
-<td>否</td>
-<td>交易类型</td>
-<td>BID，ASK</td>
-</tr>
-<tr>
-<td>states</td>
-<td>string</td>
-<td>是</td>
-<td>订单状态</td>
-<td>NEW：未成交；FILLED：已成交；PARTIALLY_FILLED：部分成交；CANCELED：已撤单；PARTIALLY_CANCELED：部分撤单</td>
-</tr>
-</tbody></table>
-
-<p>响应：</p>
-
-<table><thead>
-<tr>
-<th>参数名</th>
-<th>数据类型</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>交易对名称</td>
-</tr>
-<tr>
-<td>id</td>
-<td>string</td>
-<td>订单id</td>
-</tr>
-<tr>
-<td>price</td>
-<td>string</td>
-<td>挂单价格</td>
-</tr>
-<tr>
-<td>quantity</td>
-<td>string</td>
-<td>挂单数量</td>
-</tr>
-<tr>
-<td>deal_quantity</td>
-<td>string</td>
-<td>成交数量</td>
-</tr>
-<tr>
-<td>deal_amount</td>
-<td>string</td>
-<td>成交金额</td>
-</tr>
-<tr>
-<td>create_time</td>
-<td>string</td>
-<td>下单时间</td>
-</tr>
-<tr>
-<td>state</td>
-<td>string</td>
-<td>订单状态</td>
-</tr>
-<tr>
-<td>type</td>
-<td>string</td>
-<td>订单类型</td>
-</tr>
-<tr>
-<td>client_order_id</td>
-<td>string</td>
-<td>客户订单id</td>
-</tr>
-</tbody></table>
 <h1 id='713fd96fb2'>资产</h1>
 <blockquote>
 <p>响应示例</p>
