@@ -3659,11 +3659,12 @@ Login successful (channel = rs.login)
 ### Risk limitation
 
 ```channel = push.personal.risk.limit```
- 	
+
 | Parameter   | Data Type   | Description  |
 | ------------ | ------------ | ------------ |
 | symbol  | string  | the name of the contract |
 | positionType  | int  | position type 1:long，2:short|
+| riskSource| int | Source of risk 0:other 1:Liquidation Service|
 | level  | int   | current risk level |
 | maxVol  | decimal   | maximum position volume |
 | maxLeverage  | int   | maximum leverage ratio |
